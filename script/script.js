@@ -2,11 +2,11 @@ const casas = document.getElementsByTagName('input');
 const botaoReiniciar = document.getElementById('reiniciar');
 const vezJogador = document.getElementById('jogador'); 
 
-var jogador = '_';
-var vencedor = '_';
-var finish;
+let jogador = '_';
+let vencedor = '_';
+let finish;
 
-for(var i=0; i<9; i++){
+for(let i=0; i<9; i++){
 	casas[i].addEventListener('click', (event) => {
 		if( (event.target.value=='_') && (vencedor=='_')) {
 			event.target.value=jogador;
@@ -14,14 +14,13 @@ for(var i=0; i<9; i++){
 
 			trocarJogador();
 
-			vencedor = vitoria();
-			
+			vencedor = vitoria();			
 		}
 	});
 }
 
 botaoReiniciar.addEventListener('click', (event) => {
-	for(var i=0;i<9;i++) {
+	for(let i=0;i<9;i++) {
 		casas[i].value='_'; 
 		casas[i].style.color='#A1196B'; 
 		casas[i].style.backgroundColor='#A1196B';
@@ -32,7 +31,7 @@ botaoReiniciar.addEventListener('click', (event) => {
 	sortearJogador(); 
 });
 
-var sortearJogador = function() {
+let sortearJogador = function() {
 	if(Math.floor(Math.random() * 2)==0) {
 		jogador = "O";
 		vezJogador.innerText="O";
@@ -46,7 +45,7 @@ var sortearJogador = function() {
 
 sortearJogador();
 
-var trocarJogador = function() {
+let trocarJogador = function() {
 	if(jogador=='X') {
 		jogador='O';
 		vezJogador.innerText='O';
@@ -59,7 +58,7 @@ var trocarJogador = function() {
 	}
 }
 
-var vitoria = function() {
+let vitoria = function() {
 	if((casas[0].value==casas[1].value) && (casas[1].value==casas[2].value) && casas[0].value!='_' ) {
 		casas[0].style.backgroundColor='#0F0';
 		casas[1].style.backgroundColor='#0F0';
